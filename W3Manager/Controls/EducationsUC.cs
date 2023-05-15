@@ -34,30 +34,7 @@ namespace EmployeeManagementSystem.Controls
             // Add LVI to LstBx.Items
             LstVw_Education.Items.Add(lvi);
         }
-
-
-        /// <summary>
-        /// Calls up the course information allowing the user to modify it. Used with LinkLabel.
-        /// The updated information is added back into the Employee.Benefits.Courses
-        /// </summary>
-        /// <param name="sender">Object triggering the event</param>
-        /// <param name="e">Additional event arguments</param>
-        private void btn_ModifyCourse_Click(object sender, EventArgs e)
-        {
-            if (LstVw_Education.SelectedItems.Count == 0)
-            {
-                MessageBox.Show(
-                    Resources.NoRecordsSelectedError,
-                    Resources.ErrorTitle,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
-
-            ModifyCourseHandler(
-                PersonId,
-                LstVw_Education.SelectedItems[0].Text);
-        }
+       
         /// <summary>
         /// Calls up the course information allowing the user to modify it. Used with context menu and buttons.
         /// The updated information is added back into the Employee.Benefits.Courses
