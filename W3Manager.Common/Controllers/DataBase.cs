@@ -13,11 +13,8 @@ namespace EmployeeManagementSystem.Common.Controllers
 
         public SqlConnection conn;
         public string ConnectString;
-        public string ErrStr = "";
-    
-
-        private int _tryConnectTimeOut;
-        private int commandTimeout = 3000;
+        public string ErrStr = "";   
+        
         public string GetConnectString()
         {
             if (string.IsNullOrEmpty(ConnectString))
@@ -576,10 +573,8 @@ else
                                     id);
                                 employee.position.Name = reader["Name"] as string;
                                 employee.position.Id = (int)reader["IdPosition"];
-                                employee.Type = type;
-                               // GetPerson(reader, ref employee);
-                                dic.Add(id, employee);
-                                //employee.Benefits = new EmployeeBenefits();
+                                employee.Type = type;                             
+                                dic.Add(id, employee);                              
                                 break;
                             case EmployeeType.Hourly:
                                 employee = new Hourly(person,
@@ -588,8 +583,7 @@ else
                                     id);
                                 employee.position.Name = reader["Name"] as string;
                                 employee.position.Id = (int)reader["IdPosition"];
-                                employee.Type = type;
-                               // GetPerson(reader, ref employee);
+                                employee.Type = type;                               
                                 dic.Add(id, employee);
                                 break;
                             case EmployeeType.Salary:
@@ -622,7 +616,6 @@ else
                     ErrStr = $"ERROR SortedDictionary DB: {ex.Message}";
                 }
             }
-
 
             return dic;
         }
@@ -715,7 +708,6 @@ else
             var isOk = true;
             if (!Connect())
             {
-
                 return false;
             }
 

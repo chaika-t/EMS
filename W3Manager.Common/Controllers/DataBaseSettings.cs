@@ -9,16 +9,7 @@ using System.Xml.Serialization;
 namespace EmployeeManagementSystem.Common.Models
 {
     public class SettingsSerializer
-    {
-        public void Serialize(DataBaseSettings dataBaseSettings)
-        {
-            XmlSerializer formatter = new XmlSerializer(typeof(DataBaseSettings));
-            using (FileStream fs = new FileStream("DataBaseSettings.xml", FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fs, dataBaseSettings);
-            }
-        }
-
+    {   
         public DataBaseSettings  Deserialize()
         {
             DataBaseSettings dataBaseSettings = new DataBaseSettings();
