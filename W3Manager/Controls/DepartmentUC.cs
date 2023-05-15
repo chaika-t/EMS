@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using EmployeeManagementSystem.Common.Controllers;
+﻿using EmployeeManagementSystem.Common.Controllers;
 using EmployeeManagementSystem.Common.Models;
 using EmployeeManagementSystem.Forms;
 using EmployeeManagementSystem.Properties;
+using System;
+using System.Windows.Forms;
 
 namespace EmployeeManagementSystem.Controls
 {
@@ -36,7 +29,7 @@ namespace EmployeeManagementSystem.Controls
             ListViewItem lvi = e.Item;
             if (lvi != null)
             {
-                Department emp = _datafile.Retrieve(int.Parse(lvi.Text));
+                var emp = _datafile.Retrieve(int.Parse(lvi.Text));
                 UCEventHandler(this, new ProcessEventArgs(emp));
             }
             else
@@ -59,7 +52,7 @@ namespace EmployeeManagementSystem.Controls
                 {
                     try
                     {
-                        DepartmentDataBase my = new DepartmentDataBase(form.department);
+                        var my = new DepartmentDataBase(form.department);
                         my.AddDepartment();
                         LoadData();
                     }
@@ -165,14 +158,11 @@ namespace EmployeeManagementSystem.Controls
 
         internal void LoadData()
         {
-            DepartmentDataBase dep = new DepartmentDataBase();
+            var dep = new DepartmentDataBase();
             _datafile.Database = dep.GetDepartments();
             DisplayDatabase();
         }
 
-        public void Clear()
-        {
-        }
         private void ShowNoRecordsSelectedErrorMessage()
         {
             MessageBox.Show(

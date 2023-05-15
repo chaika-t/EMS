@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using EmployeeManagementSystem.Common.Controllers;
+using EmployeeManagementSystem.Common.Models;
+using EmployeeManagementSystem.Forms;
+using EmployeeManagementSystem.Properties;
+using System;
 using System.Linq;
 using System.Windows.Forms;
-using EmployeeManagementSystem.Common.Models;
-using EmployeeManagementSystem.Common.Controllers;
-using EmployeeManagementSystem.Properties;
-using EmployeeManagementSystem.Forms;
 
 namespace EmployeeManagementSystem.Controls
 {
@@ -17,7 +15,7 @@ namespace EmployeeManagementSystem.Controls
             InitializeComponent();
         }
 
-        public int PersonId;
+        public int PersonId { get; set; }
 
         /// <summary>
         /// Adds a new Course to the ListView by creating a new ListViewItem
@@ -36,7 +34,7 @@ namespace EmployeeManagementSystem.Controls
             // Add LVI to LstBx.Items
             LstVw_Education.Items.Add(lvi);
         }
-      
+
 
         /// <summary>
         /// Calls up the course information allowing the user to modify it. Used with LinkLabel.
@@ -105,9 +103,9 @@ namespace EmployeeManagementSystem.Controls
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    Course course = form.Course;
-                    course.PersonId = PersonId;                   
-                    DataBase db = new DataBase();
+                    var course = form.Course;
+                    course.PersonId = PersonId;
+                    var db = new DataBase();
                     db.AddCourse(course);
                     AddItem(course);
                 }
@@ -118,14 +116,14 @@ namespace EmployeeManagementSystem.Controls
         public void Show(int personId)
         {
             PersonId = personId;
-            DataBase db = new DataBase();
-            List<Course> lst = db.GetCourse(personId);
+            var db = new DataBase();
+            var lst = db.GetCourse(personId);
             LstVw_Education.Items.Clear();
             LstVw_Education.BeginUpdate();
             foreach (var course in lst)
             {
                 AddItem(course);
-            }          
+            }
 
             LstVw_Education.EndUpdate();
         }
@@ -137,28 +135,21 @@ namespace EmployeeManagementSystem.Controls
         public void ModifyCourseHandler(int empId, string courseId)
         {
             DataBase db = new DataBase();
-            List<Course> lst = db.GetCourse(empId);
-            Course course = lst.Where(item => item.CourseId == courseId).FirstOrDefault();
+            var lst = db.GetCourse(empId);
+            var course = lst.FirstOrDefault(item => item.CourseId == courseId);
             using (var form = new FrmAddCourse(course))
             {
                 if (form.ShowDialog() == DialogResult.OK)
-                {                  
+                {
                     LstVw_Education.SelectedItems[0].Remove(); // !!! update DB
                     AddItem(form.Course);
                     db.UpdateCourse(form.Course);
                 }
             }
-        }      
+        }
         public void Clear()
         {
             LstVw_Education.Items.Clear();
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-       
     }
 }

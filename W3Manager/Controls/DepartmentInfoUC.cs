@@ -76,7 +76,7 @@ namespace EmployeeManagementSystem.Controls
         public void Show(int departmentId)
         {
             PersonId = departmentId;
-            DataBase db = new DataBase();
+            var db = new DataBase();
             List<Position> lst = db.GetPositions(departmentId);
             LstVw_Education.Items.Clear();
             LstVw_Education.BeginUpdate();

@@ -30,7 +30,7 @@ namespace EmployeeManagementSystem.Controls
             ListViewItem lvi = e.Item;
             if (lvi != null)
             {
-                Employee emp = _datafile.Retrieve(int.Parse(lvi.Text));
+                var emp = _datafile.Retrieve(int.Parse(lvi.Text));
                 UCEventHandler(this, new ProcessEventArgs(emp));
             }
             else
@@ -53,7 +53,7 @@ namespace EmployeeManagementSystem.Controls
                 {
                     try
                     {
-                        EmployeeDataBase my = new EmployeeDataBase(form.Employee);
+                        var my = new EmployeeDataBase(form.Employee);
                         my.AddEmployee();
                         LoadData();
                     }
@@ -83,7 +83,7 @@ namespace EmployeeManagementSystem.Controls
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    EmployeeDataBase my = new EmployeeDataBase(form.Employee);
+                    var my = new EmployeeDataBase(form.Employee);
                     my.AddEmployee();
                     LoadData();
                 }
@@ -110,7 +110,7 @@ namespace EmployeeManagementSystem.Controls
                         MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     uint id = uint.Parse(LstView_General.SelectedItems[0].Text);
-                    EmployeeDataBase employeeClass = new EmployeeDataBase();
+                    var employeeClass = new EmployeeDataBase();
                     employeeClass.RemoveEmployee((int)id);
                     LoadData();
                 }
@@ -159,14 +159,11 @@ namespace EmployeeManagementSystem.Controls
 
         internal void LoadData()
         {
-            EmployeeDataBase empl = new EmployeeDataBase();
+            var empl = new EmployeeDataBase();
             _datafile.Database = empl.GetEmployees();
             DisplayDatabase();
         }
-
-        public void Clear()
-        {
-        }
+      
         private void ShowNoRecordsSelectedErrorMessage()
         {
             MessageBox.Show(
