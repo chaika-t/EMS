@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="w3manager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CourseIDPattern" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">^[A-Za-z]{2,3}\d{4}$</Value>
+    </Setting>
+    <Setting Name="PhonePattern" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">^(\d{3}\.){2}\d{4}$</Value>
+    </Setting>
+    <Setting Name="ZipPattern" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">^\d{5}$</Value>
+    </Setting>
+    <Setting Name="CurrencyPattern" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">^\d+\.\d{2}</Value>
+    </Setting>
+    <Setting Name="NamePattern" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">^[A-Za-z]+(\s[A-Za-z]+)*$</Value>
+    </Setting>
+    <Setting Name="DatabasePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ErrorLoggingLevel" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="DatePattern" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">^\d{2}/\d{2}/\d{4}$</Value>
+    </Setting>
+    <Setting Name="IDPattern" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">^\d{5,7}$</Value>
+    </Setting>
+    <Setting Name="PhonePatternLabel" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">xxx.xxx.xxxx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
