@@ -46,6 +46,7 @@
     <Compile Include="Controllers\DataBase.cs" />
     <Compile Include="Controllers\DepartmentDataBase.cs" />
     <Compile Include="Controllers\EmploEmployeeDataBase.cs" />
+    <Compile Include="Controllers\ProcessEventArgs.cs" />
     <Compile Include="Enumerations\EmployeeTypes.cs" />
     <Compile Include="Enumerations\PhoneDisplayFormats.cs" />
     <Compile Include="Enumerations\PhoneRegexFormats.cs" />

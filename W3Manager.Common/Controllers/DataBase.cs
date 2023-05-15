@@ -7,17 +7,6 @@ using EmployeeManagementSystem.Common.Models;
 
 namespace EmployeeManagementSystem.Common.Controllers
 {
-    /// <summary>
-    /// Данные события
-    /// </summary>
-    public class ProcessEventArgs : EventArgs
-    {
-        public ProcessEventArgs(object arg)
-        {
-            this.Argument = arg;
-        }
-        public object Argument { get; set; }
-    }
 
     public class DataBase
     {
@@ -43,7 +32,7 @@ namespace EmployeeManagementSystem.Common.Controllers
                 }
                 catch (Exception ex)
                 {
-
+                    ErrStr = $"ERROR GetConnectString DB: {ex.Message}";
                 }
 
             return ConnectString;
@@ -60,7 +49,7 @@ namespace EmployeeManagementSystem.Common.Controllers
             }
             catch (Exception ex)
             {
-                
+                ErrStr = $"ERROR Reconnect DB: {ex.Message}";
                 return false;
             }
 
@@ -146,6 +135,7 @@ namespace EmployeeManagementSystem.Common.Controllers
                 }
                 catch (Exception ex)
                 {
+                    ErrStr = $"ERROR GetCourse DB: {ex.Message}";
                 }
             }
 
@@ -196,7 +186,7 @@ namespace EmployeeManagementSystem.Common.Controllers
                 catch (Exception ex)
                 {
                     isOk = false;
-
+                    ErrStr = $"ERROR AddCourse DB: {ex.Message}";
                 }
                 finally
                 {
@@ -241,7 +231,7 @@ namespace EmployeeManagementSystem.Common.Controllers
                 catch (Exception ex)
                 {
                     isOk = false;
-
+                    ErrStr = $"ERROR UpdateCourse DB: {ex.Message}";
                 }
                 finally
                 {
@@ -306,7 +296,7 @@ else
                 catch (Exception ex)
                 {
                     isOk = false;
-
+                    ErrStr = $"ERROR UpdateHourly DB: {ex.Message}";
                 }
                 finally
                 {
@@ -317,7 +307,7 @@ else
             return isOk;
         }
 
-        public bool UpdateSalary(Salary employee) //!
+        public bool UpdateSalary(Salary employee) 
         {
             var isOk = true;
             if (!Connect())
@@ -366,7 +356,7 @@ else
                 catch (Exception ex)
                 {
                     isOk = false;
-
+                    ErrStr = $"ERROR UpdateSalary DB: {ex.Message}";
                 }
                 finally
                 {
@@ -428,7 +418,7 @@ else
                 catch (Exception ex)
                 {
                     isOk = false;
-
+                    ErrStr = $"ERROR UpdateSales DB: {ex.Message}";
                 }
                 finally
                 {
@@ -486,7 +476,7 @@ else
                 catch (Exception ex)
                 {
                     isOk = false;
-
+                    ErrStr = $"ERROR UpdateContract DB: {ex.Message}";
                 }
                 finally
                 {
@@ -518,6 +508,7 @@ else
                 catch (Exception ex)
                 {
                     ok = false;
+                    ErrStr = $"ERROR DeleteEmployee DB: {ex.Message}";
                 }
                 finally
                 {
@@ -628,6 +619,7 @@ else
                 }
                 catch (Exception ex)
                 {
+                    ErrStr = $"ERROR SortedDictionary DB: {ex.Message}";
                 }
             }
 
@@ -668,6 +660,7 @@ else
                 }
                 catch (Exception ex)
                 {
+                    ErrStr = $"ERROR GetPositions DB: {ex.Message}";
                 }
             }
 
@@ -711,6 +704,7 @@ else
                 }
                 catch (Exception ex)
                 {
+                    ErrStr = $"ERROR SortedDictionary DB: {ex.Message}";
                 }
             }
 
@@ -752,7 +746,7 @@ INSERT INTO [dbo].[Departments]
                 catch (Exception ex)
                 {
                     isOk = false;
-
+                    ErrStr = $"ERROR UpdateDepartment DB: {ex.Message}";
                 }
                 finally
                 {
@@ -785,6 +779,7 @@ INSERT INTO [dbo].[Departments]
                 catch (Exception ex)
                 {
                     ok = false;
+                    ErrStr = $"ERROR DeleteDepartment DB: {ex.Message}";
                 }
                 finally
                 {
@@ -825,6 +820,7 @@ INSERT INTO [dbo].[Departments]
                 }
                 catch (Exception ex)
                 {
+                    ErrStr = $"ERROR GetPositions DB: {ex.Message}";
                 }
             }
 
@@ -859,7 +855,7 @@ VALUES(@DepartmentId ,'' , @PositionId)";
                 catch (Exception ex)
                 {
                     isOk = false;
-
+                    ErrStr = $"ERROR UpdateDepartmentPosition DB: {ex.Message}";
                 }
                 finally
                 {
@@ -896,7 +892,7 @@ VALUES(@DepartmentId ,'' , @PositionId)";
                 catch (Exception ex)
                 {
                     isOk = false;
-
+                    ErrStr = $"ERROR RemoveDepartmentPosition DB: {ex.Message}";
                 }
                 finally
                 {
