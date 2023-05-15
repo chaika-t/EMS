@@ -51,16 +51,7 @@ namespace EmployeeManagementSystem.Controls
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    try
-                    {
-                        var my = new EmployeeDataBase(form.Employee);
-                        my.AddEmployee();
-                        LoadData();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, Resources.ErrorTitle);
-                    }
+                    AddEmployee(form.Employee);                   
                 }
             }
         }
@@ -83,12 +74,10 @@ namespace EmployeeManagementSystem.Controls
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    var my = new EmployeeDataBase(form.Employee);
-                    my.AddEmployee();
-                    LoadData();
+                    AddEmployee(form.Employee);
                 }
             }
-        }
+        }        
 
         /// <summary>
         /// Allows the user to remove an entry from the viewer, doesn't actually delete the record.
@@ -155,7 +144,20 @@ namespace EmployeeManagementSystem.Controls
 
             LstView_General.Items.Add(lvi);
         }
-
+        private void AddEmployee(Employee employee)
+        {
+            try
+            {
+                var my = new EmployeeDataBase(employee);
+                my.AddEmployee();
+                LoadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Resources.ErrorTitle);
+            }
+           
+        }
 
         internal void LoadData()
         {

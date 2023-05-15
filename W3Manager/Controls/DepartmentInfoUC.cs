@@ -39,11 +39,11 @@ namespace EmployeeManagementSystem.Controls
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    Position position = form.Position;
+                    var position = form.Position;
                     if (position == null) return;
 
                     position.IdDepartment = PersonId;
-                    DataBase db = new DataBase();
+                    var db = new DataBase();
                     db.UpdateDepartmentPosition(position);
                     AddItem(position);
                 }
@@ -77,7 +77,7 @@ namespace EmployeeManagementSystem.Controls
         {
             PersonId = departmentId;
             var db = new DataBase();
-            List<Position> lst = db.GetPositions(departmentId);
+            var lst = db.GetPositions(departmentId);
             LstVw_Education.Items.Clear();
             LstVw_Education.BeginUpdate();
             foreach (var course in lst)
